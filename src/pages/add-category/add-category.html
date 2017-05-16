@@ -1,0 +1,16 @@
+<ion-header padding>
+	<ion-title>Add Category</ion-title>
+</ion-header>
+
+<ion-content padding-top class="scroll-content" no-lines>
+<div>
+  <ion-item>
+	    <ion-input  #label no-lines name="newLabel" placeholder="category"></ion-input>
+  </ion-item>
+ </div>
+ <div>
+  <ion-item>
+    <button ion-button full (click)="addCategory(label.value)">Save</button>
+  </ion-item>
+  </div>
+</ion-content>

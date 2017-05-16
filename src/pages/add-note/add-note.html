@@ -1,0 +1,31 @@
+<ion-header padding>
+<ion-title>Add Note</ion-title>
+</ion-header>
+<ion-content padding-top>
+	<form (ngSubmit)="createNote()">
+      <ion-item>
+        <ion-label stacked>Title</ion-label>
+        <ion-input [(ngModel)]="note.title" type="text" name="noteTitle"></ion-input>
+      </ion-item>
+	  <ion-item>
+	    <ion-label stacked>Category</ion-label>
+	    <ion-select [(ngModel)]="note.category" multiple="false" name="noteCategory">
+	      <ion-option *ngFor="let category of categories" [value]="category">{{category.label}}</ion-option>
+	    </ion-select>
+	  </ion-item>      
+      <ion-item>
+        <ion-label stacked>Description</ion-label>
+        <ion-textarea [(ngModel)]="note.content" name="noteDescription"></ion-textarea>
+      </ion-item>
+      <ion-item>
+  		<ion-label stacked>Date</ion-label>
+  		<ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="note.date" name="noteDate"></ion-datetime>
+	  </ion-item>
+	  <ion-buttons>
+      	<button ion-button full>
+      		<ion-icon item-left name="add"></ion-icon>
+      		<span>Add Note</span>
+      	</button>
+      </ion-buttons>
+ 	</form>
+</ion-content>

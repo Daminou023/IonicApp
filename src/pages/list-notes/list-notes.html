@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    </ion-buttons>
+    <ion-title>List Notes</ion-title>
+    <ion-buttons (click)="presentAddNotePopover()" end>
+      <button ion-button icon-only>
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>List of all your notes</h3>
+
+<ion-list>
+<ion-card *ngFor="let note of notes">
+    <ion-item>
+      {{note.title}}
+      <button ion-button icon-only item-right clear (click)="pushEditPage(note)">
+        <ion-icon name="md-create"></ion-icon>
+      </button>
+      <button ion-button icon-only item-right clear color="danger" (click)="deleteNote(note)">
+        <ion-icon name="md-trash"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-item text-wrap>
+      <p>{{note.category.label}}</p>
+      <br>
+      <p>{{note.content}}</p>
+      <br>
+      <p>
+        {{ note.date.date | date: 'dd/MM/yyyy' }}
+      </p>
+    </ion-item>
+    <ion-item>
+      <ion-badge *ngFor="let tag of note.tags">{{tag}}</ion-badge>
+    </ion-item>
+</ion-card>
+</ion-list>
+
+
+</ion-content>
+
